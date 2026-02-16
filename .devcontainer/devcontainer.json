@@ -1,0 +1,45 @@
+{
+  // ============================================
+  // IDENTIFICATION
+  // ============================================
+  "name": "C++ Dev Container",
+
+  // ============================================
+  // IMAGE DE BASE
+  // ============================================
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  // ============================================
+  // CONFIGURATION VS CODE
+  // ============================================
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools"
+      ]
+    }
+  },
+
+  // ============================================
+  // MONTAGE DE VOLUMES
+  // ============================================
+  "mounts": ["source=${localWorkspaceFolder},target=/workspace,type=bind"],
+
+  // ============================================
+  // UTILISATEUR
+  // ============================================
+  // "remoteUser": "devuser",
+  // "containerUser": "devuser",
+
+  // ============================================
+  // COMMANDES DE CYCLE DE VIE
+  // ============================================
+  "postCreateCommand": "bash -c 'echo \"✓ Environnement créé !\"'",
+  "postStartCommand": "bash -c 'echo \"✓ Environnement prêt !\"'"
+  // "postAttachCommand": "bash -c 'curl -LsSf https://mistral.ai/vibe/install.sh | bash && cat /etc/os-release | grep PRETTY_NAME && g++ --version && gdb --version && git --version && cmake --version && valgrind --version && cppcheck --version && uncrustify --version && cccc && echo \"✓ VSCode connecté !\" && echo \"✓ Mistral Vibe prêt !\"'"
+}
